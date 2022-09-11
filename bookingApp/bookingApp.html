@@ -112,9 +112,16 @@
                 localStorage.setItem('username',name);
                 localStorage.setItem('usermail',mail);
                 localStorage.setItem('userphone',phn);
-                localStorage.setItem('userdate',date);
-                localStorage.setItem('usertime',time);
+
+                const obj= {
+                   'username' : name,
+                   'usermail' : mail,
+                   'userphone' : phn
+                }
+                localStorage.setItem('userdetails',JSON.stringify(obj));
+             
             }
+
             
 
         </script>        
