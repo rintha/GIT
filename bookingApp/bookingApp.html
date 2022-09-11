@@ -77,6 +77,10 @@
         .btn:hover {
             opacity: 0.6
         }
+        ul{
+            list-style: none; 
+        }
+
 
     </style>
 </head>
@@ -98,6 +102,7 @@
                <input type="submit" class='btn' id="makecall" name="makecall" value="GET A CALL"> 
         
             </form>
+            <ul id="listOfUsers"></ul>
 
         </div>
         <script>
@@ -107,20 +112,33 @@
                 const name = event.target.name.value
                 const mail = event.target.mail.value
                 const phn = event.target.phn.value
-                const date = event.target.date.value
-                const time = event.target.time.value
-                localStorage.setItem('username',name);
-                localStorage.setItem('usermail',mail);
-                localStorage.setItem('userphone',phn);
+                // const date = event.target.date.value
+                // const time = event.target.time.value
+                // localStorage.setItem('username',name);
+                // localStorage.setItem('usermail',mail);
+                // localStorage.setItem('userphone',phn);
 
                 const obj= {
                    'username' : name,
                    'usermail' : mail,
                    'userphone' : phn
                 }
-                localStorage.setItem('userdetails',JSON.stringify(obj));
-             
+                localStorage.setItem(obj.usermail,JSON.stringify(obj));
+                showNewUserOnscreen(obj)
+                
+                }
+                function showNewUserOnscreen(){
+                    const parentNode = document.getElementById('listofUsers');
+                    const childHTML = `<li> ${user.username}-${user.usermail}</li>`
+                    parentNode.innerHTML = parentNode.innerHTML + childHTML;
             }
+            
+            
+            // Obj.keys(localStorage).forEach((key) => {
+            //     stringifiedDetailsOfPeople = localStorage.getItem(key);
+            //     detailsOfPeople = JSON.parse(stringifiedDetailsOfPeople);
+            //     addNewLineElement(detailsOfPeople);
+            // });
 
             
 
